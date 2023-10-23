@@ -9,7 +9,7 @@ Simple script for generating icons for keyboard keys. Useful if you want to show
 - Add `font_path` and update other settings in `keyboard-key-icon-generator.py`
 - Set which keys to generate icons for in `key_names.py`
 - Run the script
-- Icons will be saved in icons-folder
+- Icons will be saved in `icons`-folder
 
 ## Possible future improvements
 

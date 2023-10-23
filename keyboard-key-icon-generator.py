@@ -1,4 +1,5 @@
 
+import os
 from PIL import Image, ImageDraw, ImageFont
 import key_names
 
@@ -15,6 +16,7 @@ def create_key_icon(key_name):
     is_uppercase = True
     min_width = 64  # Minimum width as some keys are wider than others
     height = 64
+    filename = key_name
 
     # Create font and calculate width for given text
     if is_uppercase:
@@ -37,7 +39,10 @@ def create_key_icon(key_name):
     draw.rounded_rectangle(
         box_xy, radius=8, fill=background_color, outline=line_color, width=line_width)
 
-    base_image.save(f"icons/{key_name}.png")
+    # Save image
+    if not os.path.exists("icons"):
+        os.mkdir("icons")
+    base_image.save(f"icons/{filename}.png")
 
 
 for key in key_names.keys:
