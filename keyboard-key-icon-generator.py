@@ -10,22 +10,22 @@ def create_key_icon(key_name):
     font_size = 40
     text_color = (255, 255, 255)
     background_color = None
-    line_color = (255, 255, 255)
-    line_width = 3
-    line_radius = 8
+    border_color = (255, 255, 255)
+    border_width = 3
+    border_radius = 8
     h_padding = 19
     is_uppercase = True
     min_width = 64  # Minimum width as some keys are wider than others
     height = 64
     filename = f"Keyboard_{key_name}"
-    scale_factor = 3
+    ssaa_factor = 3
 
-    scaled_font_size = font_size * scale_factor
-    scaled_line_width = line_width * scale_factor
-    scaled_line_radius = line_radius * scale_factor
-    scaled_h_padding = h_padding * scale_factor
-    scaled_min_width = min_width * scale_factor
-    scaled_height = height * scale_factor
+    scaled_font_size = font_size * ssaa_factor
+    scaled_border_width = border_width * ssaa_factor
+    scaled_border_radius = border_radius * ssaa_factor
+    scaled_h_padding = h_padding * ssaa_factor
+    scaled_min_width = min_width * ssaa_factor
+    scaled_height = height * ssaa_factor
 
     # Create font and calculate width for given text
     if is_uppercase:
@@ -46,11 +46,11 @@ def create_key_icon(key_name):
     # Draw rounded rectangle around the text
     box_xy = [(0, 0), (image_width - 1, scaled_height - 1)]
     draw.rounded_rectangle(
-        box_xy, radius=scaled_line_radius, fill=background_color, outline=line_color, width=scaled_line_width)
+        box_xy, radius=scaled_border_radius, fill=background_color, outline=border_color, width=scaled_border_width)
 
     # Downscale image to make it look better
     base_image = base_image.resize(
-        (image_width // scale_factor, scaled_height // scale_factor), resample=Image.LANCZOS)
+        (image_width // ssaa_factor, scaled_height // ssaa_factor), resample=Image.LANCZOS)
 
     # Save image
     if not os.path.exists("icons"):
